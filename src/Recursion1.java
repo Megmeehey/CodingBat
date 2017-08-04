@@ -232,7 +232,7 @@ public class Recursion1 {
             int aind = str.indexOf("abc");
             int bind = str.indexOf("aba");
             if (aind != -1 && bind != -1) {
-                return 1 + countAbc(str.substring(Math.min(aind,bind) + 2));
+                return 1 + countAbc(str.substring(Math.min(aind, bind) + 2));
             } else if (aind != -1) {
                 return 1 + countAbc(str.substring(aind + 2));
             } else if (bind != -1) {
@@ -314,14 +314,15 @@ public class Recursion1 {
     }
 
     public int strDist(String str, String sub) {
-        return sDist(str, sub, 0);
-    }
-
-    public int sDist(String str, String sub, int lastIndex) {
-        if (str.indexOf(sub) == -1) {
+        int i = str.indexOf(sub);
+        if (i == -1) {
             return 0;
         } else {
-            return Math.max(strDist(str.substring(str.indexOf(sub) + 1), sub), str.indexOf(sub) - lastIndex + sub.length() + 1);
+            return Math.max(str.lastIndexOf(sub) - i + sub.length(), strDist(str.substring(i + sub.length()), sub));
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Recursion1().strDist("catcowcat", "cow"));
     }
 }
