@@ -70,8 +70,8 @@ public class Map2 {
     }
 
     public Map<String, Boolean> wordMultiple(String[] strings) {
-        Map<String, Integer> counts = new HashMap<String, Integer>();
-        Map<String, Boolean> result = new HashMap<String, Boolean>();
+        Map<String, Integer> counts = new HashMap<>();
+        Map<String, Boolean> result = new HashMap<>();
         for (int i = 0; i < strings.length; i++) {
             String key = strings[i];
             if (counts.containsKey(key)) {
